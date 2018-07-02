@@ -14,18 +14,18 @@ afterEach(() => Cat.remove({}));
 
 describe('POST /api/cats', () => {
   const mockResource = {
-    name: faker.name.firstName(),
-    teacher: 'Vinicio',
+    name: faker.name.firstName(2),
+    cat: faker.name.lastName(2),
   };
 
-  test('200 POST for successful post of a cat', () => {
+  test.only('200 POST for successful post of a cat', () => {
     return superagent.post(apiUrl)
       .send(mockResource)
       .then((response) => {
         expect(response.status).toEqual(200);
         expect(response.body.name).toEqual(mockResource.name);
-        expect(response.body.teacher).toEqual(mockResource.teacher);
-        expect(response.body._id).toBeTruthy();
+        expect(response.body.cat).toEqual(mockResource.cat);
+        expect(response.body._id).toEqual(mockResource._id);
       })
       .catch((err) => {
         throw err;
@@ -44,7 +44,7 @@ describe('GET /api/cats', () => {
       .then((response) => {
         expect(response.status).toEqual(200);
         expect(response.body.name).toEqual(returnedCat.name);
-        expect(response.body.teacher).toEqual(returnedCat.teacher);
+        expect(response.body.cat).toEqual(returnedCat.cat);
       })
       .catch((err) => {
         throw err;

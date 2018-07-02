@@ -15,10 +15,10 @@ const catSchema = mongoose.Schema({
       ref: 'kittens',
     },
   ],
-  teacher: {
+  cats: {
     type: String,
-    default: 'RainbowCat',
-    enum: ['GreenCat', 'BlueCat', 'RedCat', 'RainbowCat'],
+    default: 'Rainbow cat',
+    enum: ['Green cat', 'Blue cat', 'Red cat', 'Rainbow cat'],
   },
 }, { timestamps: true });
 

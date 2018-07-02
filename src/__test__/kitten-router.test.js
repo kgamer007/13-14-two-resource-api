@@ -25,7 +25,7 @@ describe('POST /api/kittens', () => {
         const mockKitten = {
           first: faker.name.firstName(),
           last: faker.name.lastName(),
-          cadId: mockData.catRoom._id,
+          catId: mockData.catRoom._id,
         };
 
         return superagent.post(apiUrl)
