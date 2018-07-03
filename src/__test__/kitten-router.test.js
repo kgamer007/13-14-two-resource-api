@@ -25,7 +25,7 @@ describe('POST /api/kittens', () => {
         const mockKitten = {
           first: faker.name.firstName(),
           last: faker.name.lastName(),
-          catId: mockData.catRoom._id,
+          catId: mockData.cat._id,
         };
 
         return superagent.post(apiUrl)
@@ -44,7 +44,7 @@ describe('GET /api/kittens', () => {
   test('200 GET for succesful fetching of a kitten', () => {
     return createMockDataPromise()
       .then((mockData) => {
-        return superagent.get(`${apiUrl}/${mockData.Kitten._id}`);
+        return superagent.get(`${apiUrl}/${mockData.kitten._id}`);
       })
       .then((response) => {
         expect(response.status).toEqual(200);
