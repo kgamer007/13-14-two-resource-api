@@ -31,6 +31,16 @@ describe('POST /api/cats', () => {
         throw err;
       });
   });
+
+  test('POST - It should respond with a 400 status ', () => {
+    return superagent.post(apiUrl)
+      .then((response) => {
+        throw response;
+      })
+      .catch((err) => {
+        expect(err.status).toBe(400);
+      });
+  });
 });
 
 describe('GET /api/cats', () => {
@@ -49,5 +59,60 @@ describe('GET /api/cats', () => {
       .catch((err) => {
         throw err;
       });
+  });
+
+  test('404 GET no such cat exists', () => {
+    return superagent.get(`${apiUrl}/12345`)
+      .then((result) => {
+        throw result;
+      })
+      .catch((err) => {
+        expect(err.status).toEqual(404);
+      });
+  });
+});
+
+describe('PUT request to /api/cats', () => {
+  test('200 PUT was sucessfully updated with another cat', () => {
+    return createMockCatPromise()
+      .then((response) => {
+        return superagent.put(`${apiUrl}/${response._id}`)
+          .send({ name: 'Green cat' });
+      })
+      .then((response) => {
+        expect(response.status).toEqual(200);
+        expect(response.body.name).toEqual('Green cat');
+      });
+  });
+
+  test('404 PUT no id was found with this request', () => {
+    const mockCatUpdate = {
+      name: 'Hello kitty',
+      cat: 'Green cat',
+    };
+  
+    return superagent.put(`${apiUrl}/notAvailable`)
+      .send(mockCatUpdate)
+      .then((results) => {
+        throw results;
+      })
+      .catch((err) => {
+        expect(err.status).toEqual(404);
+      });
+  });
+});
+
+describe('DELETE requests to api/cats', () => {
+  test('204 DELETE for successful deleting of cat', () => {
+    let mockCatForDelete;
+    return createMockCatPromise()
+      .then((cat) => {
+        mockCatForDelete = cat;
+        return superagent.delete(`${apiUrl}/${mockCatForDelete._id}`);
+      })
+      .then((response) => {
+        expect(response.status).toEqual(204);
+      })
+      .catch();
   });
 });

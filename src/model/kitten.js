@@ -15,7 +15,7 @@ const kittenSchema = mongoose.Schema({
   favoriteMilks: {
     type: String,
     default: 'Strawberry milk',
-    enum: ['Strawberry milk', 'Chocolate milk', 'Vanilla milk', 'Rainbow milk'],
+    milkEnum: ['Strawberry milk', 'Chocolate milk', 'Vanilla milk', 'Rainbow milk'],
   },
   catId: { 
     type: mongoose.Schema.Types.ObjectId,

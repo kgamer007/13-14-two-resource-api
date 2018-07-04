@@ -18,7 +18,7 @@ const catSchema = mongoose.Schema({
   cats: {
     type: String,
     default: 'Green cat',
-    enum: ['Green cat', 'Blue cat', 'Red cat', 'Rainbow cat'],
+    colorEnum: ['Green cat', 'Blue cat', 'Red cat', 'Rainbow cat'],
   },
 }, { timestamps: true });
 
