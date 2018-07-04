@@ -52,6 +52,7 @@ kittenRouter.put('/api/kittens/:id?', (request, response, next) => {
       return Kitten.findByIdAndUpdate(request.params.id, request.body, options);
     })
     .then((updatedKitten) => {
+      if (!updatedKitten) return next(new HttpErrors(404, 'no cat has been found'));
       logger.log(logger.INFO, `KITTEN ROUTER AFTER PUT: Updating kitten ${JSON.stringify(updatedKitten)}`);
       return response.json(updatedKitten);
     })

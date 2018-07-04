@@ -53,6 +53,8 @@ catRouter.put('/api/cats/:id?', (request, response, next) => {
       return Cat.findByIdAndUpdate(request.params.id, request.body, options);
     })
     .then((updatedCat) => {
+      if (!updatedCat) return next(new HttpErrors(404, 'no cat has been found'));
+      
       logger.log(logger.INFO, `MOVIE ROUTER AFTER PUT: Updated cat details ${JSON.stringify(updatedCat)}`);
       return response.json(updatedCat);
     })
