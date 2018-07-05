@@ -2,12 +2,13 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import logger from './logger';
-import catRouter from '../router/cat-router';
-import kittenRouter from '../router/kitten-router';
+// import catRouter from '../router/cat-router';
+// import kittenRouter from '../router/kitten-router';
 
 // middleware
 import errorMiddleWare from './middleware/error-middleware';
 import loggerMiddleware from './middleware/logger-middleware';
+import modelRouter from '../router/model-router';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,8 +21,9 @@ app.use(express.json());
 
 // our own modules
 app.use(loggerMiddleware);
-app.use(catRouter);
-app.use(kittenRouter);
+app.use(modelRouter);
+// app.use(catRouter);
+// app.use(kittenRouter);
 app.use(errorMiddleWare);
 
 // catch all
