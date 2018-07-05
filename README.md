@@ -23,7 +23,7 @@ If the new data is posted successfully to MongoDB, the server will display a 200
 
 `cat.put()` is how we update existing data to MongoDB. 
 If the new data is updated successfully to MongoDB the server will display a 200 message
-If there is no data available to update, the server will send a 400 status code or a 404 if there is no gallery to update. 
+If there is no data available to update, the server will send a 400 status code or a 404 if there is no cat to update. 
 
 #### cat.get()
 

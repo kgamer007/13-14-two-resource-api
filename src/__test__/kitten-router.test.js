@@ -76,7 +76,7 @@ describe('GET /api/kittens', () => {
 });
 
 describe('PUT requests to /api/cats', () => {
-  test('STORE-ROUTER: 200 status code in creation', () => {
+  test('200 status code in creation', () => {
     let kitten;
     return createMockKittenPromise()
       .then((kittenMock) => {
