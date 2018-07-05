@@ -2,6 +2,9 @@
 ===
 [![Build Status](https://travis-ci.org/kgamer007/13-14-two-resource-api.svg?branch=master)](https://travis-ci.org/kgamer007/13-14-two-resource-api)
 
+## Heroku 
+https://two-resource-mongo.herokuapp.com/
+
 ## Overview
 
 The cats api provides an interface to a database of cats and kittens. Basically a personal list of cats and kittens, with properties such as name, first name, last name, id (which is given by mongoDB)
