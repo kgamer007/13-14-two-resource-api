@@ -55,7 +55,7 @@ catRouter.put('/api/cats/:id?', (request, response, next) => {
     .then((updatedCat) => {
       if (!updatedCat) return next(new HttpErrors(404, 'no cat has been found'));
       
-      logger.log(logger.INFO, `MOVIE ROUTER AFTER PUT: Updated cat details ${JSON.stringify(updatedCat)}`);
+      logger.log(logger.INFO, `CAT ROUTER AFTER PUT: Updated cat details ${JSON.stringify(updatedCat)}`);
       return response.json(updatedCat);
     })
     .catch(next);
